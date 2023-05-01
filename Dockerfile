@@ -1,16 +1,26 @@
-FROM anasty17/mltb:latest
+FROM thestethoscopic/mltb:heroku
 
 WORKDIR /usr/src/app
-RUN chmod 777 /usr/src/app
 
-COPY requirements.txt .
-RUN pip3 install --no-cache-dir -r requirements.txt
-RUN playwright install chromium
-RUN playwright install-deps
-RUN apt-get update && apt-get upgrade -y
-RUN apt -qq update --fix-missing && \
-    apt -qq install -y mediainfo
+RUN chmod 777 /usr/src/app
 
 COPY . .
 
+RUN pip3 install --no-cache-dir -r requirements.txt
+
 CMD ["bash", "start.sh"]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
